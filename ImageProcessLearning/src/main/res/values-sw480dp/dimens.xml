@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="superTitleText">24sp</dimen>
+    <dimen name="titleText">16sp</dimen>
+    <dimen name="text">14sp</dimen>
+    <dimen name="subText">12sp</dimen>
+    <dimen name="small">6dp</dimen>
+    <dimen name="medium">12dp</dimen>
+    <dimen name="large">25dp</dimen>
+    <dimen name="xlarge">32dp</dimen>
+    <dimen name="xxlarge">48dp</dimen>
+    <dimen name="main">80dp</dimen>
+    <dimen name="xxxlarge">100dp</dimen>
+    <dimen name="ultra">150dp</dimen>
+    <dimen name="xultra">96dp</dimen>
+</resources>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/black">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/large" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/filters" />
+
+            <View
+                android:background="@color/ekcolor"
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:layout_marginBottom="@dimen/large" />
+
+            <ToggleButton
+                android:id="@+id/rgbyuvSwitch"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:textOn="@string/rgbyuvon"
+                android:textOff="@string/rgbyuvoff" />
+
+            <ToggleButton
+                android:id="@+id/greyscaleSwitch"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:textOn="@string/greyon"
+                android:textOff="@string/greyoff" />
+
+            <ToggleButton
+                android:id="@+id/sobelSwitch"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:textOn="@string/sobelon"
+                android:textOff="@string/sobeloff" />
+
+            <ToggleButton
+                android:id="@+id/substractionSwitch"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textOn="@string/substractionon"
+                android:textOff="@string/substractionoff" />
+
+            <ToggleButton
+                android:id="@+id/digitalCountSwitch"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:textOn="@string/digitalon"
+                android:textOff="@string/digitaloff" />
+
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/medium"
+                android:text="@string/operators" />
+
+            <View
+                android:background="@color/ekcolor"
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:layout_marginBottom="@dimen/large" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/medium"
+                android:text="@string/sobelthreshold" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <SeekBar
+                    android:id="@+id/sobelSeekBar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/main"
+                    android:max="255"
+                    android:progress="50"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+                <EditText
+                    android:id="@+id/sobelThresholdText"
+                    android:layout_width="@dimen/main"
+                    android:textSize="@dimen/text"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:inputType="number"
+                    android:maxLength="3"/>
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/medium"
+                android:text="@string/substractionthreshold" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <SeekBar
+                    android:id="@+id/substractionSeekBar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/main"
+                    android:max="255"
+                    android:progress="60"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+                <EditText
+                    android:id="@+id/substractionThresholdText"
+                    android:layout_width="@dimen/main"
+                    android:textSize="@dimen/text"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:inputType="number"
+                    android:maxLength="3"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/medium"
+                android:text="@string/keyframe" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <SeekBar
+                    android:id="@+id/keyframeSeekBar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/main"
+                    android:max="40"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+                <EditText
+                    android:id="@+id/keyframeThresholdText"
+                    android:layout_width="@dimen/main"
+                    android:textSize="@dimen/text"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="20"
+                    android:inputType="number"
+                    android:maxLength="3"/>
+            </RelativeLayout>
+
+            <CheckBox
+                android:id="@+id/paintmotion"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium"
+                android:text="@string/paintmotion"
+                android:checked="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

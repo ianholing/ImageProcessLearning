@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Image Process Learning</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="rgbyuvon">RGB</string>
+    <string name="rgbyuvoff">YUV</string>
+    <string name="greyon">Process in grey On</string>
+    <string name="greyoff">Process in grey Off</string>
+    <string name="sobelon">Sobel Operator On</string>
+    <string name="sobeloff">Sobel Operator Off</string>
+    <string name="substractionon">Substraction On</string>
+    <string name="substractionoff">Substraction Off</string>
+    <string name="digitalon">Digital Data</string>
+    <string name="digitaloff">Analog Data</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="filters">Filters</string>
+    <string name="operators">Operators</string>
+    <string name="sobelthreshold">Sobel Threshold</string>
+    <string name="keyframe">KeyFrame</string>
+    <string name="substractionthreshold">Substraction Threshold</string>
+    <string name="paintmotion">Paint Motion Square</string>
+    <string name="drawer_open">Open Options</string>
+    <string name="drawer_close">Close Options</string>
+</resources>
