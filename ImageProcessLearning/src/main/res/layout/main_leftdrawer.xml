@@ -158,10 +158,11 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/main"
-                    android:max="40"
+                    android:max="100"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
+                    android:layout_alignParentEnd="true"
+                    android:indeterminate="false" />
 
                 <EditText
                     android:id="@+id/keyframeThresholdText"

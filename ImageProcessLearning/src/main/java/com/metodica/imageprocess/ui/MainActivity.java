@@ -3,6 +3,7 @@ package com.metodica.imageprocess.ui;
 import android.annotation.TargetApi;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.hardware.Camera;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.MenuItem;
 import com.metodica.imageprocess.R;
 import com.metodica.imageprocess.async.AsyncProcessImage;
 import com.metodica.imageprocess.imageprocess.ImageProcessing;
@@ -66,7 +68,7 @@ public class MainActivity extends SherlockActivity implements SurfaceHolder.Call
     private CheckBox paintMotionCheck;
 
     private ImageProcessing imageProcessing;
-//    private ImageProcessingYUV imageProcessing;
+//    private ImageProcessingYUV imageProcessing; PRUEBAR
     private AsyncProcessImage asyncImageProcess = null;
 
 
@@ -106,11 +108,14 @@ public class MainActivity extends SherlockActivity implements SurfaceHolder.Call
         //and same the round way
         resultFullView = (ImageView)findViewById(R.id.resultFullView);
         wrapperView = resultView;
+
+        setNavigationDrawer();
+        prepareActionBar();
     }
 
     private void prepareActionBar() {
-        getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
     private void setNavigationDrawer() {
@@ -131,16 +136,43 @@ public class MainActivity extends SherlockActivity implements SurfaceHolder.Call
         };
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
         mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        String node = null;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if (mDrawerLayout.isDrawerOpen(Gravity.LEFT))
+                    mDrawerLayout.closeDrawer(Gravity.LEFT);
+                else mDrawerLayout.openDrawer(Gravity.LEFT);
+                break;
+            default:
+                break;
+        }
+        return true;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        prepareActionBar();
-        setNavigationDrawer();
         init_values();
+        fill_listeners();
+    }
 
+    private void fill_listeners() {
         rgbyuvSwitch.setOnCheckedChangeListener(toggleListener);
         greySwitch.setOnCheckedChangeListener(toggleListener);
         sobelSwitch.setOnCheckedChangeListener(toggleListener);
@@ -165,7 +197,7 @@ public class MainActivity extends SherlockActivity implements SurfaceHolder.Call
 
         sobelSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-             public void onStartTrackingTouch(SeekBar arg0) {
+            public void onStartTrackingTouch(SeekBar arg0) {
 
             }
             @Override
@@ -278,7 +310,7 @@ public class MainActivity extends SherlockActivity implements SurfaceHolder.Call
         paintMotionCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-               imageProcessing.setPaintMotion(isChecked);
+                imageProcessing.setPaintMotion(isChecked);
             }
         });
     }
@@ -306,24 +338,6 @@ public class MainActivity extends SherlockActivity implements SurfaceHolder.Call
 //        substractionSeekBar.setProgress(substraction);
 //        sobelSeekBar.setProgress(sobel);
 //        keyframeSeekBar.setProgress(pictureCounterMax);
-    }
-
-    public void link_camera() {
-        surface = kameraview.getHolder();
-        surface.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-        surface.addCallback(this);
-    }
-
-    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    public void getFacing() {
-        PackageManager pm = getPackageManager();
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
-            if (pm.hasSystemFeature(PackageManager.FEATURE_CAMERA)) cameraFacing = Camera.CameraInfo.CAMERA_FACING_BACK;
-            else if (pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_FRONT)) cameraFacing = Camera.CameraInfo.CAMERA_FACING_FRONT;
-        }
-
-        flash = pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
     }
 
     @Override
@@ -395,13 +409,6 @@ public class MainActivity extends SherlockActivity implements SurfaceHolder.Call
     protected void onDestroy() {
         super.onDestroy();
     }
-
-
-
-
-
-
-
 
     ////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
